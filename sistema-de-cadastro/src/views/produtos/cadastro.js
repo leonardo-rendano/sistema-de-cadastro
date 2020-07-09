@@ -1,5 +1,13 @@
 import React from 'react';
 
+const estadoInicial = {
+  nome: '',
+  sku: '',
+  descrição: '',
+  preço: 0,
+  fornecedor: ''
+}
+
 export default class CadastroProdutos extends React.Component {
 
   state = {
@@ -18,6 +26,10 @@ export default class CadastroProdutos extends React.Component {
 
   onSubmit = (event) => {
     console.log(this.state)
+  }
+
+  limpaCampos = () => {
+    this.setState(estadoInicial)
   }
 
   render() {
@@ -94,7 +106,7 @@ export default class CadastroProdutos extends React.Component {
             </div>
 
             <div className="col-md-1">
-              <button className="btn btn-primary"> Limpar </button>
+              <button onClick={this.limpaCampos} className="btn btn-primary"> Limpar </button>
             </div>
           </div>
 
