@@ -14,6 +14,6 @@ export default class ProdutoService {
 
     produtos.push(produto);
 
-    localStorage.setItem(produtos, JSON.stringify(produtos))
+    localStorage.setItem(PRODUTOS, JSON.stringify(produtos))
   }
 }
