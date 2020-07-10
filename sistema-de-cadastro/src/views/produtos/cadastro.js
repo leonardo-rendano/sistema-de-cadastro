@@ -2,6 +2,8 @@ import React from 'react';
 
 import ProdutoService from '../../app/produtoService';
 
+import { withRouter } from 'react-router-dom';
+
 const estadoInicial = {
   nome: '',
   sku: '',
@@ -12,7 +14,7 @@ const estadoInicial = {
   errors: []
 }
 
-export default class CadastroProdutos extends React.Component {
+class CadastroProdutos extends React.Component {
 
   state = estadoInicial;
 
@@ -50,6 +52,19 @@ export default class CadastroProdutos extends React.Component {
     this.setState(estadoInicial)
   }
 
+  componentDidMount() {
+    const sku = this.props.match.params.sku
+
+    if(sku) {
+      const resultado = this.service.obterProdutos().filter( produto => produto.sku === sku )
+
+      if(resultado.length === 1) {
+        const produtoEncontrado = resultado[0]
+        this.setState({ ...produtoEncontrado })
+      }
+    }
+  }
+
   render() {
     return(
       <div className="card">
@@ -78,9 +93,6 @@ export default class CadastroProdutos extends React.Component {
               </div>
             )
           })
-
-          
-
         }
 
           <div className="row">
@@ -158,3 +170,5 @@ export default class CadastroProdutos extends React.Component {
     );
   }
 }
+
+export default withRouter(CadastroProdutos)
