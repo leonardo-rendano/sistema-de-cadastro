@@ -1,9 +1,9 @@
 import React from 'react';
 
-export class ConsultaProdutos extends React.Component {
+export default class ConsultaProdutos extends React.Component {
 
   state = {
-    produtos = []
+    produtos : []
   }
 
   render() {
