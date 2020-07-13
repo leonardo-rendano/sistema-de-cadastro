@@ -44,13 +44,13 @@ export default class ProdutoService {
 
   obterIndex = (sku) => {
     let index = null;
-    this.obterProdutos().forEach((produto, i) => {
+    this.obterProdutos().forEach( (produto, i) => {
       if(produto.sku === sku) {
         index = i;
       }
     })
+    return index;
   }
-  return(index)
 
 
   salvar = (produto) => {
@@ -64,11 +64,11 @@ export default class ProdutoService {
       produtos = JSON.parse(produtos) //JSON.parse para converter a STRING em ARRAY!
     }
 
-    const index = this.obterIndex(produto.sku)
+    const index = this.obterIndex(produto.sku) 
       if(index === null) {
-        produtos.push(produto);
+        produtos.push(produto)
       } else {
-        produtos[index] = produto
+        produtos[index] = produto;
       }
     
 
